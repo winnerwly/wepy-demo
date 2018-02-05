@@ -14,8 +14,8 @@
         <view class="Valtag-font16">{{item.name}}</view>
       </view>
     </repeat>
-    <view class="nextset-box" @tap="tocond2({{newdata}})">
-      <view class="{{dataidLen.length > 0 ? 'nextset-To': 'showToast'}}" @tap="tocond3({{newdata}})">下一步</view>
+    <view class="nextset-box" @tap="tocondb({{newdata}})">
+      <view class="{{dataidLen.length > 0 ? 'nextset-To': 'showToast'}}" @tap="tocondc({{newdata}})">下一步</view>
     </view>
   </view>
 </template>
@@ -49,7 +49,7 @@ export default class Valcond2 extends wepy.component {
       this.proData = d
       this.pronextData = s
     },
-    tocond3(e) {
+    tocondc(e) {
       if (this.proId.length > 0) {
         let [id, step, d, s] = e
         let newId = Array.from(new Set(id))

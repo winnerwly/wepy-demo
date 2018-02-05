@@ -221,8 +221,8 @@
           </view>
         </view>
         <view class="box-jump">
-          <view class="jump-s1" @tap="clickto1({{ datalist.id }})">预约回收</view>
-          <view class="jump-s2" @tap="clickto2({{ datalist.id }})">暂不回收</view>
+          <view class="jump-s1" @tap="clicktoa({{ datalist.id }})">预约回收</view>
+          <view class="jump-s2" @tap="clicktob({{ datalist.id }})">暂不回收</view>
         </view>
       </view>
     </view>
@@ -230,99 +230,105 @@
 </template>
 
 <script>
-import wepy from 'wepy'
-import WxCharts from '../mixins/wxcharts'
-var lineChart = null
+import wepy from "wepy";
+import WxCharts from "../mixins/wxcharts";
+var lineChart = null;
 export default class Evaluate extends wepy.page {
   config = {
-    navigationBarTitleText: '当前估价'
-  }
+    navigationBarTitleText: "当前估价"
+  };
   data = {
-    getdata: '',
+    getdata: "",
     datalist: {
       id: 9898,
-      imgurl: 'http://img.91sph.com/goods//20170406//e0cdaa71-69e7-48ff-81a5-6040e6d3dcdc_s1.jpg',
-      brand: 'Dior',
-      model: '手提包',
-      parts: '发票、身份卡、防尘袋',
-      condition: '五金件正常使用痕迹外表面明瑕疵',
-      priceFrom: '5900',
-      priceEnd: '5620',
+      imgurl:
+        "http://img.91sph.com/goods//20170406//e0cdaa71-69e7-48ff-81a5-6040e6d3dcdc_s1.jpg",
+      brand: "Dior",
+      model: "手提包",
+      parts: "发票、身份卡、防尘袋",
+      condition: "五金件正常使用痕迹外表面明瑕疵",
+      priceFrom: "5900",
+      priceEnd: "5620",
       dataArr: {
-        daraJz: ['9821', '1423', '4234', '2132'],
-        daraHt: ['2232', '5243', '1124', '1212'],
-        daraXp: ['3366', '2363', '2123', '1132'],
-        DateArr: ['04-05', '04-10', '04-15', '04-20']
+        daraJz: ["9821", "1423", "4234", "2132"],
+        daraHt: ["2232", "5243", "1124", "1212"],
+        daraXp: ["3366", "2363", "2123", "1132"],
+        DateArr: ["04-05", "04-10", "04-15", "04-20"]
       }
     }
-  }
+  };
   methods = {
-    clickto1(id) {
+    clicktoa(id) {
       wepy.navigateTo({
         url: `../pages/register?id=${id}`
-      })
+      });
     },
-    clickto2(id) {
+    clicktob(id) {
       wepy.navigateTo({
         url: `../pages/recycleOrder`
-      })
+      });
     },
     deltetData(id) {
       // 删除本单元得数组
     },
     touchHandler(e) {
       // 图标的点击事件  该部分功能正式没有加载项目中    后续的点击事件 可以将数据显示在需要显示的地方   提高交互
-      console.log('123', lineChart.getCurrentDataIndex(e))
+      console.log("123", lineChart.getCurrentDataIndex(e));
     }
-  }
+  };
   onLoad() {
     wepy.getStorage({
-      key: 'valuationData',
-      success: function (res) {
+      key: "valuationData",
+      success: function(res) {
         // console.log(res.data)
       }
-    })
+    });
     lineChart = new WxCharts({
-      canvasId: 'lineCanvas',
-      type: 'line',           // 图表类型  本项目中使用的是折现图   line   可选类型（pie, line, column, area, ring, radar）
-      animation: false,       // 是否显示加载时的动画
-      dataLabel: false,       // 是否在图标中显示数据内容
-      dataPointShape: false,  // 是否在图表中显示数据点图标标识
-      legend: true,           // 是否显示图标下方各类型的标识
-      disablePieStroke: true,     // 不绘制饼图（圆环图）各区块的白色分割线
+      canvasId: "lineCanvas",
+      type: "line", // 图表类型  本项目中使用的是折现图   line   可选类型（pie, line, column, area, ring, radar）
+      animation: false, // 是否显示加载时的动画
+      dataLabel: false, // 是否在图标中显示数据内容
+      dataPointShape: false, // 是否在图表中显示数据点图标标识
+      legend: true, // 是否显示图标下方各类型的标识
+      disablePieStroke: true, // 不绘制饼图（圆环图）各区块的白色分割线
       categories: this.datalist.dataArr.DateArr,
-      series: [{           // 数据内容添加在这里
-        color: '#f8c300',
-        name: '简直回收',
-        data: this.datalist.dataArr.daraJz
-      }, {
-        color: '#757676',
-        name: '海淘',
-        data: this.datalist.dataArr.daraHt
-      }, {
-        color: '#6abd93',
-        name: '新品',
-        data: this.datalist.dataArr.daraXp
-      }],
+      series: [
+        {
+          // 数据内容添加在这里
+          color: "#f8c300",
+          name: "简直回收",
+          data: this.datalist.dataArr.daraJz
+        },
+        {
+          color: "#757676",
+          name: "海淘",
+          data: this.datalist.dataArr.daraHt
+        },
+        {
+          color: "#6abd93",
+          name: "新品",
+          data: this.datalist.dataArr.daraXp
+        }
+      ],
       xAxis: {
-        type: 'calibration',
+        type: "calibration",
         disabled: true,
-        gridColo: '#f1f1f1',
-        fontColor: '#a6a6a6',
+        gridColo: "#f1f1f1",
+        fontColor: "#a6a6a6",
         disableGrid: false
       },
       yAxis: {
-        gridColo: '#f1f1f1',
-        fontColor: '#a6a6a6',
+        gridColo: "#f1f1f1",
+        fontColor: "#a6a6a6",
         disableGrid: false,
         min: 0,
-        format: function (val) {
-          return '¥ ' + val.toFixed(0)
+        format: function(val) {
+          return "¥ " + val.toFixed(0);
         }
       },
       width: 320,
       height: 200
-    })
+    });
   }
 }
 </script>

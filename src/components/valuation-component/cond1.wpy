@@ -50,7 +50,7 @@
       </view>
     </repeat>
   </view>
-  <view class="nextset-box" @tap="tocond2({{newdata}})">
+  <view class="nextset-box" @tap="tocondb({{newdata}})">
     <view class="{{dataidLen.length > 0 ? 'nextset-To': 'showToast'}}">下一步</view>
   </view>
 </template>
@@ -89,7 +89,7 @@ export default class Valcond1 extends wepy.component {
       this.proData = d
       this.pronextData = s
     },
-    tocond2(e) {
+    tocondb(e) {
       if (this.proId.length > 0) {
         let [id, step, d, s] = e
         let newId = Array.from(new Set(id))

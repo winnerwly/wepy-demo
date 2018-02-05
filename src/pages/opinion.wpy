@@ -40,7 +40,7 @@
         <view class="opinion-box">
           <textarea class="back-color" bindblur="getValue" placeholder="填写想法或意见"></textarea>
         </view>
-        <view class="valSubmit" @tap="submitVal">完成</view>
+        <view class="valSubmit" @tap="submitVal">提交意见</view>
       </view>
     </view>
   </scroll-view>

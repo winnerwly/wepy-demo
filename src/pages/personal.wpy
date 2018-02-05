@@ -115,7 +115,7 @@ export default class Personal extends wepy.page {
       {
         link: '../pages/recycleOrder',
         img_icon: '../images/mine_bills_icon@2x.svg',
-        title: '回收单'
+        title: '回收报告'
       },
       {
         link: '../pages/myaccount',

@@ -47,8 +47,8 @@ export default class extends wepy.app {
       'pages/aboutUs',
       'pages/evaluate',
       'pages/recycleOrder',
-      'pages/valFist'
-
+      'pages/valFist',
+      'pages/demo'
     ],
     window: {
       backgroundTextStyle: 'light',

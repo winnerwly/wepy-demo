@@ -54,7 +54,7 @@ export default class InfoTop extends wepy.component {
     }
   }
   data = {
-    protips: '简法生活，物尽其值'
+    protips: '简法生活，物尽其值..'
   }
   events = {
     'set-userInfo': (t) => {
